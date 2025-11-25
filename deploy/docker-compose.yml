@@ -5,13 +5,18 @@ services:
     build:
       context: ..
       dockerfile: deploy/Dockerfile.frontend
+      args:
+        - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
+        - NEXT_PUBLIC_BACKEND_FALLBACK=${NEXT_PUBLIC_BACKEND_FALLBACK:-http://backend:8000}
     container_name: kindminds-frontend
     restart: unless-stopped
     env_file:
       - ../.env.local  # Use your existing .env.local from root
     environment:
       - NODE_ENV=production
-      # Override with deploy/.env if needed, or use values from .env.local
+      # Runtime env vars (can override build args)
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
       - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
