@@ -181,14 +181,14 @@ kindminds_website/
 ### Frontend (NEXT_PUBLIC_*)
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `NEXT_PUBLIC_BACKEND_URL`
+- `NEXT_PUBLIC_BACKEND_URL` (set to: https://kindminds.in/api)
 - `NEXT_PUBLIC_BACKEND_FALLBACK`
 
 ### Backend
 - `GROQ_API_KEY` (required)
 - `HUGGINGFACE_API_KEY` (optional)
 - `SUPABASE_SERVICE_KEY` (optional)
-- `CORS_ORIGINS` (comma-separated)
+- `CORS_ORIGINS` (set to: https://kindminds.in,https://www.kindminds.in,http://localhost:3000)
 
 ## 🌐 Network Ports
 
@@ -263,9 +263,9 @@ docker-compose -f deploy/docker-compose.yml ps
 ## ✅ Post-Deployment Verification
 
 1. ✅ All services running: `docker-compose -f deploy/docker-compose.yml ps`
-2. ✅ Health check: `curl http://yourdomain.com/health`
-3. ✅ Frontend loads: Visit `https://yourdomain.com`
-4. ✅ Backend API: `curl https://yourdomain.com/api/`
+2. ✅ Health check: `curl http://kindminds.in/health`
+3. ✅ Frontend loads: Visit `https://kindminds.in`
+4. ✅ Backend API: `curl https://kindminds.in/api/`
 5. ✅ SSL working: Check browser padlock
 6. ✅ Chat functionality: Test in browser
 7. ✅ File uploads: Test document upload

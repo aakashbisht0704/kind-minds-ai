@@ -7,8 +7,11 @@ services:
       dockerfile: deploy/Dockerfile.frontend
     container_name: kindminds-frontend
     restart: unless-stopped
+    env_file:
+      - ../.env.local  # Use your existing .env.local from root
     environment:
       - NODE_ENV=production
+      # Override with deploy/.env if needed, or use values from .env.local
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
       - NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL}
@@ -31,7 +34,10 @@ services:
       dockerfile: deploy/Dockerfile.backend
     container_name: kindminds-backend
     restart: unless-stopped
+    env_file:
+      - ../backend/.env  # Use your existing backend/.env file
     environment:
+      # These can override or supplement backend/.env
       - GROQ_API_KEY=${GROQ_API_KEY}
       - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY:-}
       - SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}

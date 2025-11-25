@@ -138,7 +138,7 @@ app.add_middleware(
 
 Edit `deploy/nginx.conf`:
 
-1. Replace `yourdomain.com` with your actual domain
+1. Domain is already set to `kindminds.in`
 2. Uncomment HTTPS server block after SSL setup
 
 ### Step 6: Build and Start Services
