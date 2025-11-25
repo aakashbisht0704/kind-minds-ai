@@ -26,9 +26,9 @@ USER appuser
 # Expose port
 EXPOSE 8000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8000/ || exit 1
+# Health check (using python instead of curl since curl might not be in PATH)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/')" || exit 1
 
 # Run with uvicorn (multiple workers for production)
 # Workers = (2 x CPU cores) + 1, but we'll use 4 for stability
