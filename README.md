@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KindMinds AI
 
-## Getting Started
+KindMinds is a conversational AI web application designed for supportive, reflective interaction rather than pure question‑answering.
 
-First, run the development server:
+Instead of acting like a search engine, the system focuses on structured dialogue — helping users articulate thoughts, reflect, and explore ideas through guided conversation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The project explores how interface design + conversation constraints can shape healthier human‑AI interaction.
+
+---
+
+## What it does
+
+* chat‑based interaction with memory
+* structured conversational flow (not unrestricted prompting)
+* state‑aware responses
+* message synchronization across sessions
+* controlled AI behavior (see restrictions)
+
+This is not intended to replace professional help — the system is designed to be assistive, not authoritative.
+
+---
+
+## Tech Stack
+
+**Frontend**
+
+* Next.js (App Router)
+* TypeScript
+* Tailwind
+* shadcn/ui
+
+**Backend**
+
+* Node API routes
+* Python AI processing layer
+
+**Data**
+
+* Supabase (auth + database + realtime)
+* Postgres
+
+**Infrastructure**
+
+* Docker support
+* environment‑based config
+
+---
+
+## Architecture Overview
+
+```
+client (Next.js)
+      ↓
+api routes
+      ↓
+conversation manager
+      ↓
+AI response layer (python)
+      ↓
+database (supabase)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application separates:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* UI interaction
+* conversation state logic
+* AI generation
+* persistence
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This allows experimenting with different response models without rewriting the interface.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Local Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Clone
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+git clone https://github.com/aakashbisht0704/kind-minds-ai.git
+cd kind-minds-ai
+```
 
-## Deploy on Vercel
+### 2. Environment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create `.env.local` using the sample:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+cp env.sample .env.local
+```
+
+Fill required Supabase and AI keys.
+
+---
+
+### 3. Install dependencies
+
+```
+npm install
+```
+
+---
+
+### 4. Run
+
+```
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Docker (optional)
+
+```
+docker build -t kindminds .
+docker run -p 3000:3000 kindminds
+```
+
+---
+
+## Project Structure
+
+```
+src/                → frontend + routes
+backend/            → AI handling
+supabase/           → database migrations
+deploy/             → deployment config
+public/             → static assets
+```
+
+---
+
+## Design Goals
+
+This project experiments with:
+
+* safer conversational AI patterns
+* bounded responses instead of open‑ended generation
+* persistent conversational context
+* UI‑driven behavior control
+
+The focus is understanding interaction design around AI — not just model output quality.
+
+---
+
+## Status
+
+Active experiment — behavior, prompts, and constraints change frequently.
+
+---
+
+## Notes
+
+See:
+
+* `AI_RESTRICTIONS.md`
+* `CHAT_FEATURES.md`
+* `KINDMINDS_CONTEXT.md`
