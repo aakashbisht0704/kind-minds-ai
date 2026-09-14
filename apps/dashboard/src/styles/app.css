@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Parley Palette */
+    --parley-canvas: #100e0c;
+    --parley-surface: #181512;
+    --parley-card: #201c18;
+    --parley-card-hover: #26211c;
+    --parley-border: #302a24;
+    --parley-border-subtle: #241f1a;
+    --parley-border-hover: #483f36;
+
+    /* Accents */
+    --parley-amber: #f48d16;
+    --parley-amber-glow: rgba(244, 141, 22, 0.18);
+    --parley-sage: #10b981;
+    --parley-coral: #fb3858;
+
+    /* Typography Colors */
+    --parley-text-bright: #faf9f5;
+    --parley-text-muted: #a89f91;
+    --parley-text-subtle: #756d62;
+  }
+
+  body {
+    background-color: var(--parley-canvas);
+    color: var(--parley-text-bright);
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.015em;
+    overflow-x: hidden;
+  }
+}
+
+/* Parley Bento Card */
+.parley-bento-card {
+  background: #181512;
+  border: 1px solid #302a24;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parley-bento-card:hover {
+  border-color: #483f36;
+}
+
+/* Parley Glowing Ambient Card */
+.parley-glow-card {
+  background: linear-gradient(180deg, #221d18 0%, #171411 100%);
+  border: 1px solid rgba(244, 141, 22, 0.25);
+  box-shadow: 0 0 50px -10px rgba(244, 141, 22, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Parley Pill Badge */
+.parley-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(244, 141, 22, 0.08);
+  border: 1px solid rgba(244, 141, 22, 0.22);
+  color: #f48d16;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Privacy Shield: blur sensitive clinical text when enabled */
+.privacy-shield-active .shield-sensitive {
+  filter: blur(8px);
+  transition: filter 0.2s ease;
+  user-select: none;
+}
+
+.privacy-shield-active .shield-sensitive:hover {
+  filter: blur(0px);
+}
+
+/* Breathing animation for grounding */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 8s ease-in-out infinite;
+}

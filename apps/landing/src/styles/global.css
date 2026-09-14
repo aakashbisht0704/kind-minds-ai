@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Parley Signature Palette */
+    --parley-canvas: #100e0c;
+    --parley-surface: #181512;
+    --parley-card: #201c18;
+    --parley-card-hover: #26211c;
+    --parley-border: #302a24;
+    --parley-border-subtle: #241f1a;
+    --parley-border-hover: #483f36;
+
+    /* Accents */
+    --parley-amber: #f48d16;
+    --parley-amber-glow: rgba(244, 141, 22, 0.18);
+    --parley-amber-soft: rgba(244, 141, 22, 0.1);
+    --parley-sage: #10b981;
+    --parley-coral: #fb3858;
+
+    /* Typography Colors */
+    --parley-text-bright: #faf9f5;
+    --parley-text-muted: #a89f91;
+    --parley-text-subtle: #756d62;
+  }
+
+  body {
+    background-color: var(--parley-canvas);
+    color: var(--parley-text-bright);
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.015em;
+    overflow-x: hidden;
+  }
+}
+
+/* Parley Ambient Background Mesh */
+.parley-mesh {
+  background-image:
+    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(244, 141, 22, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 85% 20%, rgba(244, 141, 22, 0.05), transparent 60%),
+    radial-gradient(circle at 15% 45%, rgba(16, 185, 129, 0.04), transparent 50%);
+}
+
+/* Parley Bento Card */
+.parley-bento-card {
+  background: #181512;
+  border: 1px solid #302a24;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parley-bento-card:hover {
+  border-color: #483f36;
+  background: #1c1815;
+}
+
+/* Parley Glowing Ambient Card */
+.parley-glow-card {
+  background: linear-gradient(180deg, #221d18 0%, #171411 100%);
+  border: 1px solid rgba(244, 141, 22, 0.25);
+  box-shadow: 0 0 50px -10px rgba(244, 141, 22, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Parley Pill Badge */
+.parley-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(244, 141, 22, 0.08);
+  border: 1px solid rgba(244, 141, 22, 0.22);
+  color: #f48d16;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Parley Number Marker */
+.parley-number {
+  font-family: "Plus Jakarta Sans", monospace, sans-serif;
+  font-weight: 700;
+  color: #756d62;
+  letter-spacing: -0.03em;
+}

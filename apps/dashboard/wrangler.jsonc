@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kindminds-dashboard",
+  "account_id": "d43fc4fcde0d367489891df2cff4b0de",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kindminds-db",
+      "database_id": "5b0a17a5-e681-482b-900c-aaf667cffc78"
+    }
+  ],
+  "vars": {
+    "BETTER_AUTH_SECRET": "kindminds-trauma-informed-better-auth-secret-key-32-chars-min",
+    "BETTER_AUTH_URL": "https://kindminds-dashboard.aakashbisht1204.workers.dev",
+    "GEMINI_API_KEY": "REPLACE_WITH_GEMINI_API_KEY",
+    "CLOUDFLARE_AI_GATEWAY_URL": "https://api.cloudflare.com/client/v4/accounts/d43fc4fcde0d367489891df2cff4b0de/ai/run"
+  }
+}

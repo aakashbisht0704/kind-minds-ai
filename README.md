@@ -1,159 +1,102 @@
 # KindMinds AI
 
-KindMinds is a conversational AI web application designed for supportive, reflective interaction rather than pure question‑answering.
+> **AI-Based Real-Time Mental Health, Stress and Trauma Assessment & Distress Prediction System for Victims of Atrocities**
 
-Instead of acting like a search engine, the system focuses on structured dialogue — helping users articulate thoughts, reflect, and explore ideas through guided conversation.
+KindMinds AI is an autonomous, trauma-informed crisis stabilization and triage system built for victims of conflict, war, and extreme trauma. Built entirely in **100% TypeScript** and powered by **Bun**, it executes real-time autonomic distress telemetry, somatic stabilization via autonomous tool calling, and non-retraumatizing safety planning.
 
-The project explores how interface design + conversation constraints can shape healthier human‑AI interaction.
-
----
-
-## What it does
-
-* chat‑based interaction with memory
-* structured conversational flow (not unrestricted prompting)
-* state‑aware responses
-* message synchronization across sessions
-* controlled AI behavior (see restrictions)
-
-This is not intended to replace professional help — the system is designed to be assistive, not authoritative.
+The design system is directly inspired by the high-agency aesthetic of [Parley - AI Agent Framer Template for SaaS Startups](https://parley.framer.ai/).
 
 ---
 
-## Tech Stack
+## Live Deployments
 
-**Frontend**
-
-* Next.js (App Router)
-* TypeScript
-* Tailwind
-* shadcn/ui
-
-**Backend**
-
-* Node API routes
-* Python AI processing layer
-
-**Data**
-
-* Supabase (auth + database + realtime)
-* Postgres
-
-**Infrastructure**
-
-* Docker support
-* environment‑based config
+| Service | Target Platform | Live URL |
+| :--- | :--- | :--- |
+| **Landing Page** | Cloudflare Pages (`kindminds-landing`) | [https://kindminds-landing.pages.dev](https://kindminds-landing.pages.dev) |
+| **Dashboard & Auth Worker** | Cloudflare Worker + Assets (`kindminds-dashboard`) | [https://kindminds-dashboard.aakashbisht1204.workers.dev](https://kindminds-dashboard.aakashbisht1204.workers.dev) |
+| **Edge Database** | Cloudflare D1 SQL (`kindminds-db`) | Provisioned with 10 tables |
 
 ---
 
-## Architecture Overview
+## Core Architecture & Capabilities
 
-```
-client (Next.js)
-      ↓
-api routes
-      ↓
-conversation manager
-      ↓
-AI response layer (python)
-      ↓
-database (supabase)
-```
-
-The application separates:
-
-* UI interaction
-* conversation state logic
-* AI generation
-* persistence
-
-This allows experimenting with different response models without rewriting the interface.
+- **100% TypeScript Monorepo:** Managed via Bun workspaces with zero legacy Python or external dependencies.
+- **Autonomous Agentic Tool Pipeline:**
+  - `assessDistress`: Analyzes physiological markers, panic signals, and hyperarousal indices.
+  - `initiateGrounding`: Automatically dispatches 5-4-3-2-1 Sensory Grounding, 4-7-8 Breathing, or Bilateral Butterfly Hugs.
+  - `triggerSafetyEscalation`: Escalates high-distress sessions to verified 24/7 global crisis lifelines.
+  - `saveSafetyPlan`: Persists structured Stanley-Brown evidence-based safety steps.
+- **Trauma-Informed Safe Access (BetterAuth):**
+  - **1-Click Pseudonymous Intake:** Generates an isolated, cryptographically secure guest session. Zero personal identifiable information (PII) required.
+  - **Clinician & Caseworker Mode:** Optional email/password credentials with salted hashing on Cloudflare D1.
+- **Stealth & Privacy Guardrails:**
+  - **Double-ESC Emergency Purge:** Instantly scrubs session cache, clears local storage, and replaces browser history with a benign search page.
+  - **Privacy Text Blur:** Obscures sensitive clinical text in public or high-surveillance spaces.
 
 ---
 
-## Local Setup
-
-### 1. Clone
+## Monorepo Workspace Structure
 
 ```
-git clone https://github.com/aakashbisht0704/kind-minds-ai.git
-cd kind-minds-ai
-```
-
-### 2. Environment
-
-Create `.env.local` using the sample:
-
-```
-cp env.sample .env.local
-```
-
-Fill required Supabase and AI keys.
-
----
-
-### 3. Install dependencies
-
-```
-npm install
+kind-minds-ai/
+├── apps/
+│   ├── landing/              # Astro 5 SSR landing page with Parley design system (@astrojs/cloudflare)
+│   └── dashboard/            # TanStack Start SSR dashboard & triage station (Cloudflare Workers)
+├── packages/
+│   ├── agent/                # Autonomous Trauma AI agent with Gemini 3.1 Pro & Groq failover
+│   ├── db/                   # Kysely + Cloudflare D1 SQL schema and query builders
+│   └── types/                # Domain models, clinical records, and session types
+├── bun.lock                  # Bun lockfile
+└── package.json              # Monorepo configuration
 ```
 
 ---
 
-### 4. Run
+## Getting Started
 
-```
-npm run dev
+### Prerequisites
+- [Bun](https://bun.sh) (v1.3+ recommended)
+- [Cloudflare Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+
+### Installation
+```bash
+# Install all dependencies across all packages
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+### Local Development
+```bash
+# Run Astro landing page locally
+bun run dev:landing
+
+# Run TanStack Start dashboard locally
+bun run dev:dashboard
+```
+
+### Quality Assurance & Verification
+```bash
+# Run typecheck across all 5 workspace packages
+bun run typecheck
+
+# Run test suite across agent and BetterAuth suites
+bun test
+```
+
+### Production Build & Cloudflare Deployment
+```bash
+# Build landing and dashboard
+bun run build:landing
+bun run build:dashboard
+
+# Deploy Landing to Cloudflare Pages
+cd apps/landing && bun x wrangler pages deploy dist --project-name kindminds-landing
+
+# Deploy Dashboard to Cloudflare Workers
+cd apps/dashboard && bun x wrangler deploy
+```
 
 ---
 
-## Docker (optional)
+## License
 
-```
-docker build -t kindminds .
-docker run -p 3000:3000 kindminds
-```
-
----
-
-## Project Structure
-
-```
-src/                → frontend + routes
-backend/            → AI handling
-supabase/           → database migrations
-deploy/             → deployment config
-public/             → static assets
-```
-
----
-
-## Design Goals
-
-This project experiments with:
-
-* safer conversational AI patterns
-* bounded responses instead of open‑ended generation
-* persistent conversational context
-* UI‑driven behavior control
-
-The focus is understanding interaction design around AI — not just model output quality.
-
----
-
-## Status
-
-Active experiment — behavior, prompts, and constraints change frequently.
-
----
-
-## Notes
-
-See:
-
-* `AI_RESTRICTIONS.md`
-* `CHAT_FEATURES.md`
-* `KINDMINDS_CONTEXT.md`
+Licensed under the MIT License.
