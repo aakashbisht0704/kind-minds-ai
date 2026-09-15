@@ -14,7 +14,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,40 +28,41 @@ const {
     <style>
       body {
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background-color: #100e0c;
+        background-color: #fafbfc;
+        color: #0f172a;
       }
     </style>
   </head>
-  <body class="min-h-screen flex flex-col bg-[#100e0c] text-[#faf9f5] parley-mesh selection:bg-[#f48d16]/30 selection:text-[#f48d16]">
+  <body class="min-h-screen flex flex-col bg-[#fafbfc] text-[#0f172a] km-light-mesh selection:bg-[#6C63FF]/20 selection:text-[#6C63FF]">
     <!-- Quick Exit Safety Shield -->
     <QuickExit />
 
-    <!-- Parley Floating Pill Navbar -->
+    <!-- Frosted Floating Pill Navbar -->
     <header class="sticky top-12 z-40 w-full px-4 sm:px-6 pointer-events-none mt-2">
       <div class="max-w-5xl mx-auto pointer-events-auto">
-        <div class="bg-[#181512]/90 border border-[#302a24] backdrop-blur-xl rounded-full px-4 sm:px-6 py-2.5 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.7)] flex items-center justify-between">
+        <div class="bg-white/80 border border-slate-200/80 backdrop-blur-xl rounded-full px-4 sm:px-6 py-2.5 shadow-[0_10px_30px_-10px_rgba(108,99,255,0.12)] flex items-center justify-between">
           <a href="/" class="flex items-center gap-2.5 group">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#f48d16] to-[#d97706] flex items-center justify-center text-stone-950 font-bold shadow-md shadow-[#f48d16]/20 group-hover:scale-105 transition-transform">
-              <svg class="w-4 h-4 text-stone-950 font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#6C63FF] to-[#8B5CF6] flex items-center justify-center text-white font-bold shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
+              <svg class="w-4 h-4 text-white font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
             <div class="flex items-center gap-2">
-              <span class="font-bold text-sm tracking-tight text-[#faf9f5]">KindMinds</span>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#f48d16]/10 text-[#f48d16] border border-[#f48d16]/25 font-semibold">AI Agent</span>
+              <span class="font-bold text-sm tracking-tight text-slate-900">KindMinds</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#6C63FF]/10 text-[#6C63FF] border border-[#6C63FF]/20 font-semibold">AI Agent</span>
             </div>
           </a>
 
-          <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-[#a89f91]">
-            <a href="/" class="hover:text-[#faf9f5] transition-colors py-1">Overview</a>
-            <a href="/principles" class="hover:text-[#faf9f5] transition-colors py-1">Principles</a>
-            <a href="/resources" class="hover:text-[#faf9f5] transition-colors py-1">Global Directory</a>
+          <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-600">
+            <a href="/" class="hover:text-[#6C63FF] transition-colors py-1 font-semibold">Overview</a>
+            <a href="/principles" class="hover:text-[#6C63FF] transition-colors py-1">Principles</a>
+            <a href="/resources" class="hover:text-[#6C63FF] transition-colors py-1">Global Directory</a>
           </nav>
 
           <div class="flex items-center gap-3">
             <a
               href="https://kindminds-dashboard.aakashbisht1204.workers.dev/triage"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-[#f48d16] hover:bg-[#ff9c2b] text-stone-950 shadow-md shadow-[#f48d16]/20 transition-all hover:scale-[1.03] active:scale-[0.98]"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-[#6C63FF] hover:bg-[#5B52E0] text-white shadow-md shadow-purple-500/25 transition-all hover:scale-[1.03] active:scale-[0.98]"
             >
               <span>Launch Triage Station</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,35 +79,35 @@ const {
       <slot />
     </main>
 
-    <!-- Parley Structured Footer -->
-    <footer class="border-t border-[#241f1a] bg-[#0d0b0a] py-16 text-xs text-[#a89f91] mt-28">
+    <!-- Structured Light Footer -->
+    <footer class="border-t border-slate-200 bg-slate-50/80 py-16 text-xs text-slate-600 mt-28">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div class="md:col-span-2 space-y-3">
           <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-[#f48d16]"></span>
-            <div class="font-bold text-sm text-[#faf9f5]">KindMinds AI — Trauma Care Architecture</div>
+            <span class="w-2 h-2 rounded-full bg-[#6C63FF]"></span>
+            <div class="font-bold text-sm text-slate-900">KindMinds AI — Trauma Care Architecture</div>
           </div>
-          <p class="max-w-md text-[#756d62] text-xs leading-relaxed">
+          <p class="max-w-md text-slate-500 text-xs leading-relaxed">
             An autonomous, trauma-informed crisis stabilization partner for victims of atrocities, conflict, and violence. Non-retraumatizing somatic interventions with zero telemetry leaks.
           </p>
-          <div class="p-3.5 rounded-2xl bg-[#1c1815] border border-[#302a24] text-[#a89f91] text-xs leading-relaxed">
-            <span class="text-[#f48d16] font-bold">Emergency Notice:</span> KindMinds is an assistive triage agent, not a substitute for human acute emergency healthcare or physical rescue. If in immediate danger, connect with local emergency services or a verified crisis line.
+          <div class="p-3.5 rounded-2xl bg-white border border-slate-200/80 text-slate-600 text-xs leading-relaxed shadow-xs">
+            <span class="text-[#6C63FF] font-bold">Emergency Notice:</span> KindMinds is an assistive triage agent, not a substitute for human acute emergency healthcare or physical rescue. If in immediate danger, connect with local emergency services or a verified crisis line.
           </div>
         </div>
 
         <div>
-          <div class="font-bold text-[#faf9f5] mb-4 text-xs uppercase tracking-wider">Navigation</div>
+          <div class="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wider">Navigation</div>
           <ul class="space-y-2.5 text-xs">
-            <li><a href="/" class="hover:text-[#faf9f5] transition-colors">Triage Overview</a></li>
-            <li><a href="/principles" class="hover:text-[#faf9f5] transition-colors">The Trauma AI Manifesto</a></li>
-            <li><a href="/resources" class="hover:text-[#faf9f5] transition-colors">Global Crisis Directory</a></li>
-            <li><a href="https://kindminds-dashboard.aakashbisht1204.workers.dev/triage" class="text-[#f48d16] hover:underline transition-colors font-medium">Live Triage Station ↗</a></li>
+            <li><a href="/" class="hover:text-[#6C63FF] transition-colors">Triage Overview</a></li>
+            <li><a href="/principles" class="hover:text-[#6C63FF] transition-colors">The Trauma AI Manifesto</a></li>
+            <li><a href="/resources" class="hover:text-[#6C63FF] transition-colors">Global Crisis Directory</a></li>
+            <li><a href="https://kindminds-dashboard.aakashbisht1204.workers.dev/triage" class="text-[#6C63FF] hover:underline transition-colors font-medium">Live Triage Station ↗</a></li>
           </ul>
         </div>
 
         <div>
-          <div class="font-bold text-[#faf9f5] mb-4 text-xs uppercase tracking-wider">Zero-Footprint</div>
-          <ul class="space-y-2 text-[#756d62] text-xs">
+          <div class="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wider">Zero-Footprint</div>
+          <ul class="space-y-2 text-slate-500 text-xs">
             <li>• 1-Click Anonymous BetterAuth Session</li>
             <li>• Cloudflare Edge Execution (APAC / Global)</li>
             <li>• Double-ESC Immediate History Purge</li>
@@ -115,11 +116,11 @@ const {
         </div>
       </div>
 
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-[#241f1a] flex flex-col sm:flex-row items-center justify-between gap-4 text-[#756d62] text-xs">
-        <div>© 2026 KindMinds AI · Inspired by Parley Agent Architecture · All rights reserved.</div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs">
+        <div>© 2026 KindMinds AI · Trauma-Informed Clinical Architecture · All rights reserved.</div>
         <div class="flex items-center gap-3">
-          <span class="inline-flex items-center gap-1.5 text-xs text-[#10b981]">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span> Edge Active on Cloudflare Workers
+          <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Edge Active on Cloudflare Workers
           </span>
         </div>
       </div>

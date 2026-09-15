@@ -2,84 +2,109 @@
 
 @layer base {
   :root {
-    /* Parley Signature Palette */
-    --parley-canvas: #100e0c;
-    --parley-surface: #181512;
-    --parley-card: #201c18;
-    --parley-card-hover: #26211c;
-    --parley-border: #302a24;
-    --parley-border-subtle: #241f1a;
-    --parley-border-hover: #483f36;
+    /* KindMinds Purple Signature Palette (Light Mode) */
+    --km-canvas: #fafbfc;
+    --km-surface: #ffffff;
+    --km-surface-subtle: #f8fafc;
+    --km-card: #ffffff;
+    --km-card-hover: #fcfbfe;
+    --km-border: #e2e8f0;
+    --km-border-subtle: #f1f5f9;
+    --km-border-hover: #c7d2fe;
 
     /* Accents */
-    --parley-amber: #f48d16;
-    --parley-amber-glow: rgba(244, 141, 22, 0.18);
-    --parley-amber-soft: rgba(244, 141, 22, 0.1);
-    --parley-sage: #10b981;
-    --parley-coral: #fb3858;
+    --km-purple: #6c63ff;
+    --km-purple-hover: #5b52e0;
+    --km-purple-light: #8b5cf6;
+    --km-purple-glow: rgba(108, 99, 255, 0.2);
+    --km-purple-soft: rgba(108, 99, 255, 0.08);
+    --km-pink: #ec4899;
+    --km-emerald: #10b981;
+    --km-rose: #f43f5e;
 
     /* Typography Colors */
-    --parley-text-bright: #faf9f5;
-    --parley-text-muted: #a89f91;
-    --parley-text-subtle: #756d62;
+    --km-text-bright: #0f172a;
+    --km-text-muted: #475569;
+    --km-text-subtle: #94a3b8;
+
+    /* Backwards compatibility aliases */
+    --parley-canvas: var(--km-canvas);
+    --parley-surface: var(--km-surface);
+    --parley-card: var(--km-card);
+    --parley-card-hover: var(--km-card-hover);
+    --parley-border: var(--km-border);
+    --parley-border-subtle: var(--km-border-subtle);
+    --parley-border-hover: var(--km-border-hover);
+    --parley-amber: var(--km-purple);
+    --parley-amber-glow: var(--km-purple-glow);
+    --parley-amber-soft: var(--km-purple-soft);
+    --parley-sage: var(--km-emerald);
+    --parley-coral: var(--km-rose);
+    --parley-text-bright: var(--km-text-bright);
+    --parley-text-muted: var(--km-text-muted);
+    --parley-text-subtle: var(--km-text-subtle);
   }
 
   body {
-    background-color: var(--parley-canvas);
-    color: var(--parley-text-bright);
+    background-color: var(--km-canvas);
+    color: var(--km-text-bright);
     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     letter-spacing: -0.015em;
     overflow-x: hidden;
   }
 }
 
-/* Parley Ambient Background Mesh */
-.parley-mesh {
+/* Light Ambient Mesh with Purple Radiance */
+.km-light-mesh, .parley-mesh {
+  background-color: #fafbfc;
   background-image:
-    radial-gradient(ellipse 60% 40% at 50% -10%, rgba(244, 141, 22, 0.12), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 85% 20%, rgba(244, 141, 22, 0.05), transparent 60%),
-    radial-gradient(circle at 15% 45%, rgba(16, 185, 129, 0.04), transparent 50%);
+    radial-gradient(ellipse 65% 45% at 50% -5%, rgba(108, 99, 255, 0.12), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 85% 20%, rgba(236, 72, 153, 0.08), transparent 60%),
+    radial-gradient(circle at 15% 45%, rgba(139, 92, 246, 0.08), transparent 50%),
+    radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
 }
 
-/* Parley Bento Card */
-.parley-bento-card {
-  background: #181512;
-  border: 1px solid #302a24;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+/* Light Bento Card */
+.km-bento-card, .parley-bento-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(108, 99, 255, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.parley-bento-card:hover {
-  border-color: #483f36;
-  background: #1c1815;
+.km-bento-card:hover, .parley-bento-card:hover {
+  border-color: rgba(108, 99, 255, 0.4);
+  box-shadow: 0 16px 36px -8px rgba(108, 99, 255, 0.14), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  transform: translateY(-2px);
 }
 
-/* Parley Glowing Ambient Card */
-.parley-glow-card {
-  background: linear-gradient(180deg, #221d18 0%, #171411 100%);
-  border: 1px solid rgba(244, 141, 22, 0.25);
-  box-shadow: 0 0 50px -10px rgba(244, 141, 22, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+/* Light Glowing Ambient Card */
+.km-glow-card, .parley-glow-card {
+  background: linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, rgba(253, 242, 248, 0.9) 50%, rgba(238, 242, 255, 0.95) 100%);
+  border: 1px solid rgba(108, 99, 255, 0.28);
+  box-shadow: 0 20px 45px -15px rgba(108, 99, 255, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* Parley Pill Badge */
-.parley-pill {
+/* Light Pill Badge */
+.km-pill, .parley-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background: rgba(244, 141, 22, 0.08);
-  border: 1px solid rgba(244, 141, 22, 0.22);
-  color: #f48d16;
+  background: rgba(108, 99, 255, 0.09);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  color: #6c63ff;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* Parley Number Marker */
-.parley-number {
+/* Purple Number Marker */
+.km-number, .parley-number {
   font-family: "Plus Jakarta Sans", monospace, sans-serif;
   font-weight: 700;
-  color: #756d62;
+  color: #6c63ff;
   letter-spacing: -0.03em;
 }
